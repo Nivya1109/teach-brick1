@@ -29,10 +29,11 @@ Two classifiers were tried:
 - Within-subject (subject 1, 5-fold cross-validation): 88.9% accuracy (chance 50%)
 - Cross-subject, Attempt 1 (CSP+LDA, leave-one-subject-out): 54.4% — FAIL vs the fixed 70% gate
 - Cross-subject, Attempt 2 (Riemannian, leave-one-subject-out): 57.6% — FAIL vs the fixed 70% gate
+- Brick 1b (calibration-assisted: train on 9 subjects plus the test subject's run 6, test on runs 10–14, CSP+LDA): 55.3% — FAIL vs the fixed 70% gate
 
 ## Conclusion
 
-Reading imagined hand movement works within a person (88.9%) but does not transfer to unseen people with these methods (54.4% / 57.6% vs a 70% gate). Brain patterns are personal: a future device must calibrate to its wearer. That calibration problem is the next brick.
+Reading imagined hand movement works when the model trains mainly on the person's own data (88.9% within-subject). It fails when trained on other people (54.4% / 57.6%), and a small calibration slice mixed into stranger data does not rescue it (55.3%) — the personal data is drowned out. Brain patterns are personal: personal data must be the main ingredient, not a sprinkle. A future device must be trained primarily on its own wearer. The reading chapter is closed with this finding; the next phase is the offline closed loop.
 
 ## File guide
 
@@ -42,7 +43,9 @@ Reading imagined hand movement works within a person (88.9%) but does not transf
 - `classifier.py` — Runs within-subject CSP+LDA 5-fold cross-validation.
 - `evaluate.py` — Runs Attempt 1: CSP+LDA leave-one-subject-out evaluation.
 - `evaluate_v2.py` — Runs Attempt 2: Riemannian tangent-space leave-one-subject-out evaluation.
+- `evaluate_calibration.py` — Runs the Brick 1b calibration-assisted CSP+LDA evaluation.
 - `results.md` — Records both attempts and their honest pass/fail verdicts.
+- `BRICK1B.md` — Defines the fixed Brick 1b calibration protocol, gate, and reporting rule.
 
 ## How to run
 
@@ -61,4 +64,5 @@ Run the scripts in this order:
 .venv/bin/python classifier.py
 .venv/bin/python evaluate.py
 .venv/bin/python evaluate_v2.py
+.venv/bin/python evaluate_calibration.py
 ```
