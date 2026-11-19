@@ -68,3 +68,10 @@ The method used the same channel standardization, 8–30 Hz filtering, 4-second 
 Mean Brick 1b accuracy: 55.3%
 Fixed gate: 70%
 Verdict: FAIL
+
+## Phase 2 — Offline Closed Loop
+
+The Phase 2 reader trained on subject 1 runs 6 and 10, then replayed run 14 one epoch at a time as if live.
+Run 14 was never used for training, and every replayed piece was printed and written to feedback_log.csv.
+Replay accuracy: 86.7% (13/15 correct)
+Step 5 scored 88.9% with same-session cross-validation; this replay test is harder because run 14 is a separate session the reader never trained on.
