@@ -21,3 +21,27 @@ No subject appeared in both the training set and test set for a given result.
 Mean LOSO accuracy: 54.4%
 Fixed gate: 70%
 Verdict: FAIL
+
+
+## Attempt 2
+
+This method estimated OAS covariance matrices for each epoch and mapped them into tangent space.
+A logistic regression classifier then learned left-versus-right motor imagery across the nine training subjects.
+The held-out subject was tested without appearing in training.
+
+| Subject | Accuracy |
+| --- | ---: |
+| 1 | 64.4% |
+| 2 | 71.1% |
+| 3 | 46.7% |
+| 4 | 55.6% |
+| 5 | 53.3% |
+| 6 | 48.9% |
+| 7 | 60.0% |
+| 8 | 55.6% |
+| 9 | 53.3% |
+| 10 | 66.7% |
+
+Mean LOSO accuracy (Attempt 2): 57.6%
+Fixed gate: 70%
+Verdict: FAIL
